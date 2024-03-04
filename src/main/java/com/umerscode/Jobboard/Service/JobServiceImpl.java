@@ -4,22 +4,29 @@ import com.umerscode.Jobboard.Entity.Job;
 import com.umerscode.Jobboard.Repository.JobRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@RequestMapping("/jobs")
 public class JobServiceImpl implements JobService{
 
     @Autowired
     private final JobRepo jobRepo;
 
+
+
     @Override
     public List<Job> getJobs() {
         return jobRepo.findAll();
     }
+
 
     @Override
     public List<Job> getJobsByJobType(String jobType) {
@@ -39,7 +46,7 @@ public class JobServiceImpl implements JobService{
         existJob.setJobType(job.getJobType());
         existJob.setPayPerHour(job.getPayPerHour());
         existJob.setYearsOfExperience(job.getYearsOfExperience());
-        existJob.setCompany(job.getCompany());
+       // existJob.setCompany(job.getCompany());
         return existJob;
     }
 

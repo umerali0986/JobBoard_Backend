@@ -29,7 +29,7 @@ public class Company implements Serializable {
     @Getter
     private String address;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "company") @Getter
     private List<Job> jobs = new ArrayList<>();
 
     public Company(Long id, String name, String email, String phone, String address) {

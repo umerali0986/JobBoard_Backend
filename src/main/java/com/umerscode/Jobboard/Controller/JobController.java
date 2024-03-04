@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,16 +37,19 @@ public class JobController {
     }
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('EMPLOYER')")
     public ResponseEntity<Job> createJob(@RequestBody Job newJob) {
         return new ResponseEntity<>(jobService.creatJob(newJob), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
+    @PreAuthorize("hasRole('EMPLOYER')")
     public ResponseEntity<Job> updateJob(@RequestBody Job job) {
         return new ResponseEntity<>(jobService.updateJob(job), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('EMPLOYER')")
     public void deleteJobById(@PathVariable("id") int jobId) {
         jobService.deleteJobById(jobId);
     }

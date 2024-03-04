@@ -9,6 +9,8 @@ import java.util.Optional;
 @Repository
 public interface CompanyRepo extends JpaRepository<Company,Long> {
 
+    Company findByEmail(String email);
+
     Optional<Company> findByName(String companyName);
 
 

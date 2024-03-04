@@ -1,5 +1,6 @@
 package com.umerscode.Jobboard.Service;
 
+import com.umerscode.Jobboard.Dto.RegisterCompanyDto;
 import com.umerscode.Jobboard.Entity.Company;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface CompanyService {
     Company createCompany(Company newCompany);
     Company updateCompany(Company updatedCompany);
     void deleteCompany(int id);
+
+    Company registerCompany(RegisterCompanyDto registerDto);
 }
