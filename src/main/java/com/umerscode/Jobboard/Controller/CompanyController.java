@@ -7,6 +7,7 @@ import com.umerscode.Jobboard.Entity.Job;
 import com.umerscode.Jobboard.Jwt.JwtService;
 import com.umerscode.Jobboard.Repository.CompanyRepo;
 import com.umerscode.Jobboard.Service.CompanyServiceImpl;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/company")
@@ -66,10 +68,28 @@ public class CompanyController {
 //        return ResponseEntity.ok().body(companyRepo.findByEmail(currentUser.getEmail()));
 //    }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Company>> getCompanies(){
+        return new ResponseEntity<>(companyService.getCompanies(), OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Company> updateCompany(@RequestBody Company company){
+        return new ResponseEntity<>(companyService.updateCompany(company), OK);
+    }
+
+
     @PostMapping("/register")
-    public ResponseEntity<Company> registerCompany(@RequestBody RegisterCompanyDto registerDto){
+    public ResponseEntity<?> registerCompany(@RequestBody RegisterCompanyDto registerDto){
         Company registeredCompany = companyService.registerCompany(registerDto);
         final String jwtToken = jwtServices.generateJwt(registerDto.getUser());
-        return new ResponseEntity<>(registeredCompany, CREATED);
+
+        return new ResponseEntity<>(jwtToken, CREATED);
+       // return new ResponseEntity<>(registeredCompany, CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCompanyById(@PathVariable int id){
+        companyService.deleteCompany(id);
     }
 }

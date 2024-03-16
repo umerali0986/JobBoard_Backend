@@ -41,14 +41,22 @@ public class WebSecurityConfig {
         http.csrf().disable()
 
                 .authorizeHttpRequests()
+
                 .antMatchers("/employee/register").permitAll()
                 .antMatchers("/company/register").permitAll()
+                .antMatchers("/api/v1/authenticate").permitAll()
+                .antMatchers("/company/all").permitAll()
+                .antMatchers("/job/all").permitAll()
+                .antMatchers("/job/type/**").permitAll()
+                .antMatchers("/job/company/**").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic();
-        //formLogin().defaultSuccessUrl("/api/v1/user/profile");
+                //.formLogin();
+//                .defaultSuccessUrl("/api/v1/authenticate",true);
 
 
         return http.build();

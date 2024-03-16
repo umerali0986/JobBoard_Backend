@@ -25,8 +25,8 @@ public class JobController {
         return new ResponseEntity<>(jobService.getJobs(), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Job>> getJobByType(@RequestParam("job_type") String jobType){
+    @GetMapping(path = "/type/{jobType}")
+    public ResponseEntity<List<Job>> getJobByType(@PathVariable("jobType") String jobType){
         return new ResponseEntity<>(jobService.getJobsByJobType(jobType), HttpStatus.OK);
     }
 
@@ -37,19 +37,19 @@ public class JobController {
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('EMPLOYER')")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public ResponseEntity<Job> createJob(@RequestBody Job newJob) {
         return new ResponseEntity<>(jobService.creatJob(newJob), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    @PreAuthorize("hasRole('EMPLOYER')")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public ResponseEntity<Job> updateJob(@RequestBody Job job) {
         return new ResponseEntity<>(jobService.updateJob(job), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('EMPLOYER')")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public void deleteJobById(@PathVariable("id") int jobId) {
         jobService.deleteJobById(jobId);
     }

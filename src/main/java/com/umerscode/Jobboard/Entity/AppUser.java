@@ -33,6 +33,10 @@ public class AppUser implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    public Role getRole() {
+        return role;
+    }
+
     @Override
     public String getPassword() {
         return password;

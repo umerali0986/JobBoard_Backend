@@ -26,22 +26,25 @@ public class EmployeeController {
     private final JwtService jwtServices;
 
     @GetMapping(path = "/all")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public ResponseEntity<List<Employee>> getEmployees(){
         return new ResponseEntity<>(employeeService.getEmployees(), HttpStatus.OK);
     }
 
-    @GetMapping()
-    public ResponseEntity<List<Employee>> getEmployeeByJobType(@RequestParam("job_type") String jobType){
+    @GetMapping(path = "/type/{jobType}")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
+    public ResponseEntity<List<Employee>> getEmployeeByJobType(@PathVariable("jobType") String jobType){
         return  new ResponseEntity<>(employeeService.getEmployeeByJobType(jobType),HttpStatus.OK);
     }
 
 
     @PostMapping("/register")
-    public ResponseEntity<Employee> registerEmployee(@RequestBody RegisterEmployeeDto registerDto){
+    public ResponseEntity<?> registerEmployee(@RequestBody RegisterEmployeeDto registerDto){
         System.out.println("register...");
         Employee registerEmployee = employeeService.registerEmployee(registerDto);
         final String jwtToken = jwtServices.generateJwt(registerDto.getUser());
-        return new ResponseEntity<>(registerEmployee, CREATED);
+        return new ResponseEntity<>(jwtToken, CREATED);
+//        return new ResponseEntity<>(registerEmployee, CREATED);
     }
 //    @PostMapping("/create")
 //    public ResponseEntity<Employee> createEmployee(@RequestBody Employee newEmployee){
