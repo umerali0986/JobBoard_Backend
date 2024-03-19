@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface JobRepo extends JpaRepository<Job, Long> {
 
     Optional<List<Job>> findByJobType(String jobType);
-    Optional<List<Job>> findByCompanyId(long companyId);
+    Optional<List<Job>> findByCompanyEmail(String email);
     //Optional<Company> findCompanyById(int jobId);
 
 

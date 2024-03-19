@@ -37,11 +37,12 @@ public class AuthController {
             System.out.println("Print......");
         }
         AppUser activeUser = userRepo.findUserByEmail(request.getEmail()).get();
-        UserDetails activeUserDetail = userRepo.findUserByEmail(request.getEmail()).get();
+       // UserDetails activeUserDetail = userRepo.findUserByEmail(request.getEmail()).get();
 
 //        AppUser activeUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         final String jwtToken = jwtService.generateJwt(activeUser);
         jwtAuth.setJwt(jwtToken);
+        jwtAuth.setRole(activeUser.getRole().name());
         jwtAuth.setMessage("Login success");
         System.out.println("JWt => " + jwtToken);
         return ResponseEntity.ok().body(jwtAuth);

@@ -10,4 +10,6 @@ public class JwtAuth {
 
     private String message = "Invalid email or password";
     private String jwt;
+
+    private String role;
 }

@@ -31,9 +31,9 @@ public class JobController {
     }
 
 
-    @GetMapping("/company/{id}")
-    public ResponseEntity<List<Job>> getJobByCompanyId(@PathVariable long id){
-        return new ResponseEntity<>(jobService.getJobsByCompanyId(id), HttpStatus.OK);
+    @GetMapping("/company/{email}")
+    public ResponseEntity<List<Job>> getJobsByCompanyEmail(@PathVariable String email){
+        return new ResponseEntity<>(jobService.getJobsByCompanyEmail(email), HttpStatus.OK);
     }
 
     @PostMapping("/create")

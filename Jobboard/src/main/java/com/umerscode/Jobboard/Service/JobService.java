@@ -9,7 +9,7 @@ public interface JobService {
 
     List<Job> getJobs();
     List<Job> getJobsByJobType(String jobType);
-    List<Job> getJobsByCompanyId(long companyId);
+    List<Job> getJobsByCompanyEmail(String email);
     Job updateJob(Job job);
     Job creatJob(Job job);
     void deleteJobById(int id);
