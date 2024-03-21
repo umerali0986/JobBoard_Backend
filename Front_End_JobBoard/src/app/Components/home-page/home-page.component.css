@@ -1,0 +1,43 @@
+nav{
+    display: grid;
+    grid-template-columns: 1fr 350px;
+}
+nav input{
+    width: 270px;
+    margin-right: 10px;
+}
+
+nav button{
+    padding: 6px;
+    width: auto;
+    text-align: center;
+    background-color: rgb(192, 240, 248);
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+
+.main-container{
+    padding-left: 50px;
+}
+
+.main-container h1{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+label{
+    font-weight: 500;
+}
+
+.apply-btn{
+    width: 100px;
+    background-color: rgb(117, 214, 255);
+    border: none;
+    padding: 7px;
+    border-radius: 7px;
+    font-weight: 500;
+    margin: 5px;  
+    margin-left: 4rem;  
+}

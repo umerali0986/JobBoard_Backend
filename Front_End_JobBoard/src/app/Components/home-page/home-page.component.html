@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 4em;">
+    <a class="navbar-brand" style="color:white;">Job Board</a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbarColor02">
+       <!-- <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+             <a class="nav-link" style="cursor: pointer;"  >Add Employee <span class="sr-only">(current)</span></a>
+          </li>
+           (click) = "openModal(employee,'add')" -->
+       <!-- </ul>  -->
+       <form class="form-inline my-2 my-lg-0">
+        <!-- (ngModelChange)="searchEmployee(key.value)" #key="ngModel" ngModel -->
+          <input type="search" 
+           name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search jobs..." required>
+       </form>
+       <button class="btn-primary-btn">SignIn/up</button>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <h1>All Jobs</h1>
+
+    <div class="row container">
+        <div  class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <h3>Job Details</h3>
+                    <!-- <div class="col-6">
+                        <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{employee?.firstName}} {{employee?.lastName}}</h5>
+                        <p class="m-0">{{employee?.jobTitle}}</p>
+                    </div> -->
+                </div>
+                <ul class="list-group list-group-flush">
+                    
+                    <li class="list-group-item"><label>Job type : </label> UI/UX</li>
+                    <li class="list-group-item"><label>Pay/Hour : </label> $40.25 </li>
+                    <li class="list-group-item"><label>Education level : </label> Bachelors degree</li>
+                    <li class="list-group-item"><label>Experience years : </label> 2</li>
+
+                    <!-- <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{employee?.email}}</a></li>
+                    <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phone}}</li> -->
+                </ul>
+                <button class="apply-btn">Apply</button>
+                <!-- <div class="card-body"> -->
+                    <!-- <div class="float-right btn-group btn-group-sm">
+                        <a href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit" (click) = "openModal(employee,'edit')"><i class="fa fa-pencil"></i> </a>
+                        <a href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete" (click) = "openModal(employee,'delete')"><i class="fa fa-times"></i></a>
+                    </div>
+                    <ul class="social-links list-inline mb-0">
+                        <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="GitHub"><i class="fa fa-github"></i></a></li>
+                    </ul> -->
+                <!-- </div> -->
+            </div>
+        </div>
+        
+    </div>
+  </div>
